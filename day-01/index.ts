@@ -8,6 +8,10 @@ export const getPart1Solution = async () => {
 export const getPart2Solution = async () => {
   const lines = await getLines("day-01");
 
+  // This could be done so much better by just looping through each line and matching either
+  // numbers or words, but I'm lazy and this is kind of a funny solution.
+  // Info: Number needs to be added somewhere in the middle, because otherwise something like 'eightwo' doesn't work.
+
   const mappedLines = lines.map((line) =>
     line
       .replaceAll("one", "o1ne")
