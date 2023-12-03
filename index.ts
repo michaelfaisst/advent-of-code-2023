@@ -31,5 +31,10 @@ const day = await select({
 
 // const day = "day-03" as string;
 
-const module = await import(`./${day}`);
-printDay(module);
+try {
+    const module = await import(`./${day}`);
+    printDay(module);
+} catch (e) {
+    console.log(chalk.red("No solution found for this day."));
+    process.exit(1);
+}
