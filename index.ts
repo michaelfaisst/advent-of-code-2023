@@ -1,9 +1,6 @@
 import figlet from "figlet";
 import chalk from "chalk";
 import select from "@inquirer/select";
-import * as day1 from "./day-01";
-import * as day2 from "./day-02";
-import * as day3 from "./day-03";
 
 console.log(chalk.red(figlet.textSync("AOC 2023", { font: "Ghost" })));
 console.log();
@@ -34,14 +31,5 @@ const day = await select({
 
 // const day = "day-03" as string;
 
-switch (day) {
-    case "day-01":
-        printDay(day1);
-        break;
-    case "day-02":
-        printDay(day2);
-        break;
-    case "day-03":
-        printDay(day3);
-        break;
-}
+const module = await import(`./${day}`);
+printDay(module);
