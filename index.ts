@@ -16,20 +16,20 @@ const printDay = async (day: {
     console.log(`Part 2: ${chalk.green(result2)}`);
 };
 
-const day = await select({
-    message: "Select a day",
-    choices: new Array(25).fill(0).map((_, i) => {
-        const day = i + 1;
-        const paddedDay = day.toString().padStart(2, "0");
+// const day = await select({
+//     message: "Select a day",
+//     choices: new Array(25).fill(0).map((_, i) => {
+//         const day = i + 1;
+//         const paddedDay = day.toString().padStart(2, "0");
+//
+//         return {
+//             name: `Day ${day}`,
+//             value: `day-${paddedDay}`,
+//         };
+//     }),
+// });
 
-        return {
-            name: `Day ${day}`,
-            value: `day-${paddedDay}`,
-        };
-    }),
-});
-
-// const day = "day-03" as string;
+const day = "day-04" as string;
 
 try {
     const module = await import(`./${day}`);
