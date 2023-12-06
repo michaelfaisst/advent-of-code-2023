@@ -9,11 +9,19 @@ const printDay = async (day: {
     getPart1Solution: () => Promise<number>;
     getPart2Solution: () => Promise<number>;
 }) => {
+    const startPart1 = performance.now();
     const result1 = await day.getPart1Solution();
-    console.log(`Part 1: ${chalk.green(result1)}`);
+    const endPart1 = performance.now();
+    const timeString1 = chalk.gray(`(${(endPart1 - startPart1).toFixed(2)}ms)`);
 
+    console.log(`Part 1: ${chalk.green(result1)} ${timeString1}`);
+
+    const startPart2 = performance.now();
     const result2 = await day.getPart2Solution();
-    console.log(`Part 2: ${chalk.green(result2)}`);
+    const endPart2 = performance.now();
+    const timeString2 = chalk.gray(`(${(endPart2 - startPart2).toFixed(2)}ms)`);
+
+    console.log(`Part 2: ${chalk.green(result2)} ${timeString2}`);
 };
 
 const day = await select({
@@ -29,7 +37,7 @@ const day = await select({
     }),
 });
 
-// const day = "day-05" as string;
+// const day = "day-06" as string;
 
 try {
     const module = await import(`./${day}`);
