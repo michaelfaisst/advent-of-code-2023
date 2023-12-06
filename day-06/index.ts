@@ -52,10 +52,7 @@ export const getPart1Solution = async () => {
     }, 1);
 };
 
-// could propably be done way better with kind of a binary search algorithm
-// to check when the distance is reached for the first time and the last time
-// distance is reached (where hold time becomes too long). Every time between
-// those two is a way to win.
+// to improve: use quadratic equation
 export const getPart2Solution = async () => {
     const lines = await getLines("day-06");
     const races = parseRaces(lines, true);
