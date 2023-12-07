@@ -37,7 +37,7 @@ const day = await select({
     }),
 });
 
-// const day = "day-06" as string;
+// const day = "day-07" as string;
 
 try {
     const module = await import(`./${day}`);
