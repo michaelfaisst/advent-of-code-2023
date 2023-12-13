@@ -5,8 +5,14 @@ interface Line {
     groupCounts: number[];
 }
 
-const parseLine = (line: string): Line => {
-    const [map, counts] = line.split(" ");
+const parseLine = (line: string, expand: boolean): Line => {
+    let [map, counts] = line.split(" ");
+
+    if (expand) {
+        (map = new Array(5).fill(map).join("?")),
+            (counts = new Array(5).fill(counts).join(","));
+    }
+
     return {
         map,
         groupCounts: counts.split(",").map(Number),
@@ -54,15 +60,21 @@ const calcPermutations = (line: Line): number => {
     return numMatches;
 };
 
-export const getPart1Solution = async () => {
-    const lines = await getLines("day-12");
-    const input = lines.map(parseLine);
+const getResult = async (part2: boolean = false) => {
+    const lines = await getLines("day-12", true);
+    const input = lines.map((line) => parseLine(line, part2));
 
-    return input.reduce((acc, line) => {
-        return acc + calcPermutations(line);
+    return input.reduce((acc, line, index) => {
+        const result = calcPermutations(line);
+        console.log(`Processed line ${index + 1}: ${result}`);
+        return acc + result;
     }, 0);
 };
 
+export const getPart1Solution = async () => {
+    return await getResult();
+};
+
 export const getPart2Solution = async () => {
-    return 0;
+    return await getResult(true);
 };
