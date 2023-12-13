@@ -37,7 +37,7 @@ const printDay = async (day: {
 //     }),
 // });
 
-const day = "day-12" as string;
+const day = "day-13" as string;
 
 try {
     const module = await import(`./${day}`);
